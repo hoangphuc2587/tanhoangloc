@@ -1,0 +1,13 @@
+#header .more-inside-menu {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    z-index: 1000;
+    background: none;
+    box-shadow: none;
+}
+.services-block ul{
+	display: inline-table;
+}
+#container{display:none !important;}@media screen and (min-width:768px){#header .more-inside-menu{position: absolute;top: 0px;left: 0px;right: 0px;z-index: 1000;background: none;box-shadow:none}}body{background:#FFF !important;}
