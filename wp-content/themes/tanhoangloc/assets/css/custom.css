@@ -1,1 +1,64 @@
 #header .csticky{top: 0px !important;bottom: inherit !important;position: fixed !important;z-index: 1000;width: 100%;left: 0px;transition: transform .5s ease-in-out,transform .5s ease-in-out,background .5s ease-in-out;-moz-transition: height .5s ease-in-out,-moz-transform .5s ease-in-out,background .5s ease-in-out;-webkit-transition: height .5s ease-in-out,-webkit-transform .5s ease-in-out,background .5s ease-in-out;-o-transition: height .5s ease-in-out,-o-transform .5s ease-in-out,background .5s ease-in-out;-webkit-animation-duration: 0.5s;-moz-animation-duration: 0.5s;-o-animation-duration: 0.5s;animation-duration: 0.5s;-webkit-animation-name: fadeInDown;animation-name: fadeInDown;}@-webkit-keyframes fadeInDown{0%{opacity: 0;-webkit-transform: translate3d(0,-100%,0);transform: translate3d(0,-100%,0);}100%{opacity: 1;-webkit-transform: none;transform: none;}}@keyframes fadeInDown{0%{opacity: 0;-webkit-transform: translate3d(0,-100%,0);-ms-transform: translate3d(0,-100%,0);transform: translate3d(0,-100%,0);}100%{opacity: 1;-webkit-transform: none;-ms-transform: none;transform: none;}}.csticky-holder>.parent-is-stuck:after{content:"" !important;display: block !important;clear: both !important;}.csticky-holder>.parent-is-stuck>div{float: inherit !important;max-width: 100%;}@media screen and (max-width: 991px){.csticky-holder>.csticky{position: relative !important;top:inherit !important;}.csticky-holder>.parent-is-stuck,.csticky-holder .csticky-stick{position: relative !important;max-width: 100% !important;height: auto !important;top: inherit !important;}}
+
+.content .table-content-don-gia{
+    overflow: hidden;
+    width: 1000px;
+    text-align: center;
+    margin: auto;
+    border: none;
+    margin-bottom: 20px;	
+}
+
+.content .table-content-don-gia td{
+    border: none;
+    padding: 0px 8px;
+}
+
+.content .table-content-don-gia .t-left {
+    background: #101010;
+    color: #eebd00;
+    vertical-align: middle;
+    font-size: 36px;
+    font-weight: 700;
+    text-transform: uppercase;  
+}
+
+.content .table-content-don-gia .border-content{
+    border: 3px solid #101010;
+    margin-bottom: 5px;
+}
+
+.content .table-content-don-gia .border-content-last{
+    margin-bottom: 0px;
+}
+
+
+
+.content .table-content-don-gia .table-content-detail{
+    margin-bottom: 4px;
+}
+.content .table-content-don-gia .table-content-detail h2{
+    font-size: 30px;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin: 4px 0px;
+    color: #eebd00;
+}
+
+.content .table-content-don-gia .table-content-detail ul{
+    list-style: none;
+    text-align: left;
+    margin-left: 12px;
+    font-size: 17px;
+    color: #101010;
+    font-weight: 700;
+    margin-bottom: 0px;  
+}
+
+.content .table-content-don-gia .table-content-detail .price-detail{
+    font-size: 20px;
+    vertical-align: middle;
+    font-weight: 700;    
+}
+
+

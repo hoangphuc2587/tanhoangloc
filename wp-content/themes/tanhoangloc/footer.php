@@ -16,21 +16,6 @@
 		<div class="clearfix"></div>
 		<footer id="footer" class="footer-class">
 			<div class="inside aniview slow" av-animation="slideInUp">
-				<!-- indexer::stop --><!-- Template for "only counting", no display in Frontend. --> 
-				<span class="visitor_count invisible">
-					<!-- counted -->
-				</span>
-				<!-- <script>var iWidth=window.innerWidth||(window.document.documentElement.clientWidth||window.document.body.clientWidth);var iHeight=window.innerHeight||(window.document.documentElement.clientHeight||window.document.body.clientHeight);var sWidth=screen.width;var sHeight=screen.height;document.write('<img class="invisible" src="system/modules/visitors/public/ModuleVisitorsScreenCount.php?vcid=1&scrw='+sWidth+'&scrh='+sHeight+'&scriw='+iWidth+'&scrih='+iHeight+'">');</script> --><!-- indexer::continue -->
-				<div class="bottom-contact hidden-xs">
-					<div class="container padding-bs-0">
-						<div class="col-sm-8 padding-bs-0 hire-left wow slideInLeft">
-							<div class="hire-overlay"></div>
-							<div class="hire-icon"><i class="fa fa-home"></i></div>
-							<h3>Hãy để chúng tôi đồng hành cùng bạn!</h3>
-						</div>
-						<div class="col-sm-4 padding-bs-0 col-sm-right wow slideInRight"> <a href="<?php echo get_home_url(); ?>/lien-he" title="Liên hệ">LIÊN HỆ</a></div>
-					</div>
-				</div>
 				<div class="footer-icon">
 					<div class="container col-sm-no-padding-left col-sm-no-padding-right">
 						<div class="row d-display">
