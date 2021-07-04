@@ -1120,6 +1120,7 @@ h2.color-white {
 }
 .title-headdline:before {
     left: 0px;
+    display: none;
 }
 .title-headdline:after,
 .list-news-scroll > h2:after,
@@ -1130,6 +1131,7 @@ h2.color-white {
 }
 .title-headdline:after{
     left: 0px;
+    display: none;
 }
 h1.title-headdline > span {
     padding: 5px 0px 15px 0px;
@@ -1954,14 +1956,16 @@ h2.title-headdline > span i {
         text-align: left;
     } /*.container-slider .ws-title >span{width:100%;line-height:1em;background:none;text-align:center;color:#eebd00;font-size:1.7em; font-weight: bold;*/ /* top: 50%;*/ /* left: 50%;*/ /* position: absolute;*/ /*}*/
     .container-slider .ws-title > span {
-        top: 50%;
-        left: 2%;
+        top: 30%;
+        left: 0%;
         position: absolute;
         line-height: 1.1em;
-        color: #e6e6e6;
-        font-size: 3em;
+        color: #eebd00;
+        font-size: 2.5em;
         font-weight: bold;
-        width: 100%;
+        width: 800px;
+        text-align: center;
+        text-transform: uppercase;
     }
     .container-slider .ws-title > div {
         top: 67%;
@@ -2191,7 +2195,12 @@ h2.title-headdline > span i {
 }
 @media screen and (max-width: 1440px) {
     .container-slider .ws-title > div {
-        top: 69%;
+        top: 60%;
+        text-align: right;
+        right: 5%;
+        left: unset;
+        font-size: 2em;
+        color: #eebd00;
     }
 }
 @media screen and (max-width: 992px) {
@@ -2293,6 +2302,7 @@ h2.title-headdline > span i {
         font-size: 3em;
         font-weight: bold;
         width: 100%;
+        display: none;
     }
     .container-slider .ws-title > div {
         top: 74%;
@@ -2304,6 +2314,7 @@ h2.title-headdline > span i {
         width: 100%;
         word-wrap: break-word;
         padding-right: 5%;
+        display: none;
     }
     .p-menu {
         padding: 10px 0;
@@ -3539,7 +3550,7 @@ h2.title-headdline > span i {
     margin-right: 25px;
     width: 56px;
     text-align: center;
-    color: #181319;
+    color: #eebd00;
     -webkit-transition: all 0.5s ease-in-out;
     -moz-transition: all 0.5s ease-in-out;
     -o-transition: all 0.5s ease-in-out;
@@ -3560,7 +3571,7 @@ h2.title-headdline > span i {
     display: block;
 }
 .background-features .feature h5 {
-    font-weight: normal;
+    font-weight: 700;
     color: #000000;
     clear: none;
     font-size: 1.4em;
@@ -3745,6 +3756,20 @@ h2.title-headdline > span i {
         display: block;
         padding-top: 10px;
         font-size: 1em;
+        position: relative;
+        margin: 15px 0px;
+    }
+
+    .services-block .title i.fa {
+        font-size: 3.5em;
+        position: absolute;
+        left: 30px;
+        top: -5px;
+        color: #eebd00;
+    } 
+
+    .services-block .title span.text{
+        margin-left: 100px; 
     }
 }
 .contruction-div {
@@ -3875,6 +3900,32 @@ h2.title-headdline > span i {
     .camket-div .content-icon figure {
         padding: 15px;
     }
+
+    .services-block  {
+       margin-top: 30px;
+    }
+
+    .services-block .title {
+        text-transform: uppercase;
+        text-align: left;
+        display: block;
+        padding-top: 10px;
+        font-size: 12px;
+        position: relative;
+        margin: 25px 0px
+    }
+
+    .services-block .title i.fa {
+        font-size: 3.5em;
+        position: absolute;
+        left: 45px;
+        top: -50px;
+        color: #eebd00;
+    } 
+
+    .services-block .title span.text{
+        margin-left: 0px; 
+    }    
 }
 .pl-25 {
     padding-left: 24px;

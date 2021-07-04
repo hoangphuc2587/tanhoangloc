@@ -12,6 +12,22 @@
 get_header();
 $term = get_queried_object();
 $pagename =  $term->slug;
+
+$cate = array(1,3,5,6);
+if ($pagename == 'biet-thu'){
+   $cate = array(1);
+}elseif ($pagename == 'nha-pho'){
+   $cate = array(3);
+}elseif ($pagename == 'noi-that-can-ho'){
+   $cate = array(5);
+}elseif ($pagename == 'cao-oc-khach-san'){
+   $cate = array(6);
+}
+$data = get_posts( array(
+    'post_type'        => 'product',
+    'category'         => $cate,
+    'numberposts'      => 50
+));
 ?>
 
 
@@ -33,82 +49,27 @@ $pagename =  $term->slug;
 				</div>
 				<!-- indexer::continue --><!-- indexer::stop -->				
 				<div class="mod_newslist list-news-scroll block-color block">
-					<?php if ($pagename == 'nha-pho'):?>
-					<h1><span>Nhà Phố Hiện Đại | Nhà Phố Cổ Điển | Thiết Kế Nhà Phố | Mẫu Nhà Phố Đẹp | Thiết Kế Thi Công Trọn Gói Nhà Phố</span></h1>
-					<script>document.addEventListener("DOMContentLoaded",function(event){(function($){if($(".mod_breadcrumb").length>0){var li_last=$(".mod_breadcrumb").find("li.last"),more=$(".mod_breadcrumb").find(".info-more");if(li_last.length==0){li_last=$(".mod_breadcrumb").find(".last");}li_last.html("Nhà Phố Hiện Đại | Nhà Phố Cổ Điển | Thiết Kế Nhà Phố | Mẫu Nhà Phố Đẹp | Thiết Kế Thi Công Trọn Gói Nhà Phố");if(more.length>0){more.html("Nhà Phố Hiện Đại | Nhà Phố Cổ Điển | Thiết Kế Nhà Phố | Mẫu Nhà Phố Đẹp | Thiết Kế Thi Công Trọn Gói Nhà Phố");}}}(jQuery));});</script>
+					<?php if (!empty($data)):?>					
 					<div class="content" id="content-news-919">						
-						<div class="layout_latest arc_75 block odd" data-order="1">
+						<?php
+                            $i = 0;
+						    foreach ($data as $post) {
+							    $post_id = get_the_ID();
+							    $city = get_field_object('address' , $post_id);
+						?>
+						<div class="layout_latest arc_75 block <?php echo $i == 0 ? 'first' : '' ?> <?php echo $i%2 == 0 ? 'odd' : 'even' ?> text-center wow fadeInUp child-list-<?php echo ($i + 1);?>" data-order="<?php echo ($i + 1);?>">
 							<div class="aniview slow" av-animation="fadeIn">
-								<figure class="image_container float_above"> <a href="thietke/nha-pho-anh-thuan.html" title="Nhà Phố - Anh THUẬN"> <img src="<?php echo get_template_directory_uri()?>/assets/contao/images/loading.gif" data-src="<?php echo get_template_directory_uri()?>/assets/images/9/nha-pho-anh-thieu-nha-trang-01-cef59a99.jpg" width="360" height="360" alt="Nhà Phố - Anh THUẬN"class='lazy'> </a></figure>
+								<figure class="image_container float_above"> <a href="<?php the_permalink(); ?>" title="<?php echo $post->post_title;?>"> <img src="<?php echo get_the_post_thumbnail_url($post_id,'full');?>" width="360" height="489" alt="<?php echo $post->post_title;?>"> </a></figure>
 								<div class="content">
-									<h2> <a href="thietke/nha-pho-anh-thuan.html" title="Xem bài viết: Nhà Phố - Anh THUẬN">Nhà Phố - Anh THUẬN</a> </h2>
-									<div class="teaser"> Quận 9</div>
-								</div>
-							</div>
-						</div>						
-						<div class="layout_latest arc_75 block even" data-order="2">
-							<div class="aniview slow" av-animation="fadeIn">
-								<figure class="image_container float_above"> <a href="thietke/nha-pho-chi-thanh.html" title="Nhà Phố - Chị Thanh"> <img src="<?php echo get_template_directory_uri()?>/assets/contao/images/loading.gif" data-src="<?php echo get_template_directory_uri()?>/assets/images/9/thiet-ke-nha-pho-anh-vu-di-an-01-e08f5739.png" width="360" height="360" alt="Nhà Phố - Chị Thanh"class='lazy'> </a></figure>
-								<div class="content">
-									<h2> <a href="thietke/nha-pho-chi-thanh.html" title="Xem bài viết: Nhà Phố - Chị Thanh">Nhà Phố - Chị Thanh</a> </h2>
-									<div class="teaser"> Tiền Giang</div>
+									<h2> <a href="<?php the_permalink(); ?>" title="Xem bài viết:<?php echo $post->post_title;?>"><?php echo $post->post_title;?></a> </h2>
+									<div class="teaser"><?php echo $city['value'];?></div>
 								</div>
 							</div>
 						</div>
-						<div class="layout_latest arc_75 block odd" data-order="3">
-							<div class="aniview slow" av-animation="fadeIn">
-								<figure class="image_container float_above"> <a href="thietke/nha-pho-chu-tam.html" title="Nhà Phố - Chú TÂM"> <img src="<?php echo get_template_directory_uri()?>/assets/contao/images/loading.gif" data-src="<?php echo get_template_directory_uri()?>/assets/images/1/nha-pho-chu-tam-quan-2-01-16d36f21.jpg" width="360" height="446" alt="Nhà Phố - Chú TÂM"class='lazy'> </a></figure>
-								<div class="content">
-									<h2> <a href="thietke/nha-pho-chu-tam.html" title="Xem bài viết: Nhà Phố - Chú TÂM">Nhà Phố - Chú TÂM</a> </h2>
-									<div class="teaser"> Quận 2</div>
-								</div>
-							</div>
-						</div>
-						<div class="layout_latest arc_75 block even" data-order="2">
-							<div class="aniview slow" av-animation="fadeIn">
-								<figure class="image_container float_above"> <a href="thietke/nha-pho-chi-thanh.html" title="Nhà Phố - Chị Thanh"> <img src="<?php echo get_template_directory_uri()?>/assets/contao/images/loading.gif" data-src="<?php echo get_template_directory_uri()?>/assets/images/6/thiet-ke-nha-pho-chinh-thanh-tien-giang-01-50701ef6.jpg" width="360" height="360" alt="Nhà Phố - Chị Thanh"class='lazy'> </a></figure>
-								<div class="content">
-									<h2> <a href="thietke/nha-pho-chi-thanh.html" title="Xem bài viết: Nhà Phố - Chị Thanh">Nhà Phố - Chị Thanh</a> </h2>
-									<div class="teaser"> Tiền Giang</div>
-								</div>
-							</div>
-						</div>
-						<div class="layout_latest arc_75 block odd" data-order="1">
-							<div class="aniview slow" av-animation="fadeIn">
-								<figure class="image_container float_above"> <a href="thietke/nha-pho-anh-thuan.html" title="Nhà Phố - Anh THUẬN"> <img src="<?php echo get_template_directory_uri()?>/assets/contao/images/loading.gif" data-src="<?php echo get_template_directory_uri()?>/assets/images/a/thiet-ke-nha-pho-anh-thuan-thu-duc-01-1442888a.jpg" width="360" height="360" alt="Nhà Phố - Anh THUẬN"class='lazy'> </a></figure>
-								<div class="content">
-									<h2> <a href="thietke/nha-pho-anh-thuan.html" title="Xem bài viết: Nhà Phố - Anh THUẬN">Nhà Phố - Anh THUẬN</a> </h2>
-									<div class="teaser"> Quận 9</div>
-								</div>
-							</div>
-						</div>						
-						<div class="layout_latest arc_75 block even" data-order="2">
-							<div class="aniview slow" av-animation="fadeIn">
-								<figure class="image_container float_above"> <a href="thietke/nha-pho-chi-thanh.html" title="Nhà Phố - Chị Thanh"> <img src="<?php echo get_template_directory_uri()?>/assets/contao/images/loading.gif" data-src="<?php echo get_template_directory_uri()?>/assets/images/e/thiet-ke-nha-pho-anh-khanh-quan-2-01-d7ce5a3e.jpg" width="360" height="360" alt="Nhà Phố - Chị Thanh"class='lazy'> </a></figure>
-								<div class="content">
-									<h2> <a href="thietke/nha-pho-chi-thanh.html" title="Xem bài viết: Nhà Phố - Chị Thanh">Nhà Phố - Chị Thanh</a> </h2>
-									<div class="teaser"> Tiền Giang</div>
-								</div>
-							</div>
-						</div>
-						<div class="layout_latest arc_75 block odd" data-order="3">
-							<div class="aniview slow" av-animation="fadeIn">
-								<figure class="image_container float_above"> <a href="thietke/nha-pho-chu-tam.html" title="Nhà Phố - Chú TÂM"> <img src="<?php echo get_template_directory_uri()?>/assets/contao/images/loading.gif" data-src="<?php echo get_template_directory_uri()?>/assets/images/3/nha-pho-anh-binh-quan-thu-duc-01-ee73c943.jpg" width="360" height="446" alt="Nhà Phố - Chú TÂM"class='lazy'> </a></figure>
-								<div class="content">
-									<h2> <a href="thietke/nha-pho-chu-tam.html" title="Xem bài viết: Nhà Phố - Chú TÂM">Nhà Phố - Chú TÂM</a> </h2>
-									<div class="teaser"> Quận 2</div>
-								</div>
-							</div>
-						</div>
-						<div class="layout_latest arc_75 block even" data-order="2">
-							<div class="aniview slow" av-animation="fadeIn">
-								<figure class="image_container float_above"> <a href="thietke/nha-pho-chi-thanh.html" title="Nhà Phố - Chị Thanh"> <img src="<?php echo get_template_directory_uri()?>/assets/contao/images/loading.gif" data-src="<?php echo get_template_directory_uri()?>/assets/images/1/thiet-ke-nha-pho-anh-linh-quan-tan-phu-01-e4d49ef1.jpg" width="360" height="360" alt="Nhà Phố - Chị Thanh"class='lazy'> </a></figure>
-								<div class="content">
-									<h2> <a href="thietke/nha-pho-chi-thanh.html" title="Xem bài viết: Nhà Phố - Chị Thanh">Nhà Phố - Chị Thanh</a> </h2>
-									<div class="teaser"> Tiền Giang</div>
-								</div>
-							</div>
-						</div>																		
+					    <?php 
+                                $i++;
+					        } 
+					    ?>																	
 					</div>
 					<script>(function($){$(document).ready(function(){$("#content-news-919").mpmansory({childrenClass: 'layout_latest',columnClasses: 'padding',breakpoints:{lg: 3,md: 4,sm: 6,xs:6},distributeBy: {order: false,height: false,attr: 'data-order',attrOrder: 'asc'},/*/default distribute by order,options=>order: true/false,height: true/false,attr=>'data-order',attrOrder=>'asc'/'desc'*/ onload: function (items){/*make somthing with items */}});});}(jQuery));</script><!-- indexer::stop -->
 					<div class="pagination block" style="display:none">

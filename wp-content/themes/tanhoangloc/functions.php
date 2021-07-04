@@ -627,3 +627,54 @@ function twentytwentyone_add_ie_class() {
 	<?php
 }
 add_action( 'wp_footer', 'twentytwentyone_add_ie_class' );
+
+
+function prefix_send_email_to_admin() {
+	if (!session_id()) {
+      session_start();
+    }
+    /**
+     * At this point, $_GET/$_POST variable are available
+     *
+     * We can do our normal processing here
+     */ 
+
+    // Sanitize the POST field
+    // Generate email content
+    // Send to appropriate email
+    $name = $_POST['name'];
+    $phone = $_POST['phone'];
+    $email = $_POST['email'];
+    $contact = $_POST['contact'];
+    $captcha = $_POST['capcha'];
+
+    $post_information = array(
+        'post_title' => wp_strip_all_tags( $name ),
+        'post_content' => $contact,
+        'post_type' => 'contact',
+        'post_status' => 'publish'
+    );
+
+    if ($_SESSION['captcha_token'] !==  $captcha){
+    	$_SESSION['captcha_error'] = 'error';
+    	$_SESSION['name'] = $name;
+    	$_SESSION['phone'] = $phone;
+    	$_SESSION['email'] = $email;
+    	$_SESSION['contact'] = $contact;
+    	$_SESSION['capcha'] = $captcha;
+    }else{
+    	$post_id = wp_insert_post( $post_information );
+    	add_post_meta( $post_id, 'contact_phone', $phone );
+    	add_post_meta( $post_id, 'contact_email', $email );
+    	$_SESSION['succsess'] = 'succsess';
+    }
+
+    wp_redirect( home_url().'/lien-he' );
+    exit;
+ 
+    // wp_insert_post( $post_information );
+    // echo $_POST['question_security'];
+   
+}
+add_action( 'admin_post_nopriv_contact_form', 'prefix_send_email_to_admin' );
+add_action( 'admin_post_contact_form', 'prefix_send_email_to_admin' );
