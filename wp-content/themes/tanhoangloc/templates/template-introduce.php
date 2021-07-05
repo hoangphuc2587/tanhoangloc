@@ -78,9 +78,9 @@ get_header();
                                 <div class="content">
                                     <h1 style="text-align: center;"><strong>Tầm nhìn</strong></h1>
                                     <p style="text-align: center;">Tầm nhìn đến năm 2025,&nbsp;<span data-text-color="primary"><strong>TÂN HOÀNG LỘC</strong></span>&nbsp; sẽ đạt 3 mục tiêu cốt lõi</p>
-                                    <ul>
+                                    <ul style="list-style:none">
                                         <li style="text-align: center;">Công ty xây dựng <strong>Nhà Phố, Biệt Thự, Nhà Hàng, Khách Sạn </strong>được yêu thích nhất tại Việt Nam</li>
-                                        <li style="text-align: center;"><strong>Thiết kế &amp; Xây dựng</strong> hơn 1000 Nhà Phố, 400 Biệt Thự, 100 Nhà Hàng, Khách Sạn tại Việt Nam</li>
+                                        <li style="text-align: center;padding: 10px 0px"><strong>Thiết kế &amp; Xây dựng</strong> hơn 1000 Nhà Phố, 400 Biệt Thự, 100 Nhà Hàng, Khách Sạn tại Việt Nam</li>
                                         <li style="text-align: center;">Là công ty <strong>Thiết kế &amp; Thi Công nhà ở </strong> có môi trường làm việc ổn định, lý thú đầy sáng tạo</li>
                                     </ul>
                                     <p style="height:40px"></p>

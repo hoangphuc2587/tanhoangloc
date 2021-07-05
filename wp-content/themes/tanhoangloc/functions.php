@@ -678,3 +678,50 @@ function prefix_send_email_to_admin() {
 }
 add_action( 'admin_post_nopriv_contact_form', 'prefix_send_email_to_admin' );
 add_action( 'admin_post_contact_form', 'prefix_send_email_to_admin' );
+
+
+function getPopularPosts() {
+	$posts_per_page = (int)$_POST['posts_per_page'];
+	$data = get_posts( array(
+	    'post_type'        => 'product',
+	    'category'         => (int)$_POST['category'],
+	    'posts_per_page' => $posts_per_page,
+        'offset'         => (int)$_POST['offset'] * $posts_per_page
+	));
+    $html = '';
+    $cateName = '';
+    if ($_POST['category'] == 3){
+        $cateName = 'Nhà Phố';
+    }else if ($_POST['category'] == 1){
+        $cateName = 'Biệt thự';
+    }else if ($_POST['category'] == 6){
+        $cateName = 'Khách sạn';
+    }    
+	if(count($data) > 0){
+		$i = ($posts_per_page * $_POST['offset']) + 1;
+
+		foreach ($data as $post) {
+			$post_id = $post->ID;
+			$city = get_field_object('address' , $post_id);
+			$odd = $i%2 == 0 ? 'odd' : 'even';
+			$html .= '<div class="layout_latest arc_75 block '.$odd.' text-center wow fadeInUp child-list-'.$i.'" data-order="'.$i.'">
+					<div class="aniview slow" av-animation="fadeIn">
+						<figure class="image_container float_above"> <a href="'.the_permalink().'" title="'.$cateName.' - '.$post->post_title.'"> <img src="'.get_the_post_thumbnail_url($post_id,"full").'" width="360" height="489" alt="'.$cateName.' - '.$post->post_title.'"> </a></figure>
+						<div class="content">
+							<h2> <a href="'.the_permalink().'" title="Xem bài viết: '.$cateName.' - '.$post->post_title.'">'.$cateName.' - '.$post->post_title.'</a> </h2>
+							<div class="teaser">'.$city['value'].'</div>
+						</div>
+					</div>
+				</div>';
+			$i++;	
+		}
+	}
+
+	echo $html;
+	die;
+	
+}
+
+
+add_action('wp_ajax_getPopularPosts', 'getPopularPosts');
+add_action('wp_ajax_nopriv_getPopularPosts', 'getPopularPosts');

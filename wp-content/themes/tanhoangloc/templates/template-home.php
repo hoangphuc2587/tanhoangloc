@@ -7,6 +7,7 @@
  * @subpackage Twenty_Twenty
  * @since Twenty Twenty 1.0
  */
+$posts_per_page = 8;
 ?>
 <!doctype html>
 <html <?php language_attributes(); ?> <?php twentytwentyone_the_html_classes(); ?>>
@@ -67,7 +68,8 @@
 								$nhapho = get_posts( array(
 								    'post_type'        => 'product',
 								    'category'         => 3,
-								    'numberposts'      => 8
+								    'posts_per_page' => $posts_per_page,
+                                    'offset'         => 0
 								));
 								?>
 								<?php
@@ -89,16 +91,19 @@
                                         $i++;
 							        } 
 							    ?>								
-							</div>
-							<div>
+							</div>							
+							<?php if (count($nhapho) == $posts_per_page) { ?>
+							<div class="block-view-more-1">
 								<div class="col-md-12 col-sm-12 text-center mt-3">
 									 <button class="btn btn-primary btn-view-more btn-view-more-1">XEM THÊM</button>
-								</div>	
+								</div>
+								<input type="hidden" id="hdOffset1" value="0">
 							</div>
+						    <?php } ?>
 							<script>
 								(function($) {
-								    $(document).ready(function() {
-								        $("#content-news-916").mpmansory({
+								    jQuery(document).ready(function() {
+								        jQuery("#content-news-916").mpmansory({
 								            childrenClass: 'layout_latest',
 								            columnClasses: 'padding',
 								            breakpoints: {
@@ -115,7 +120,58 @@
 								            },
 								            /*/default distribute by order,options=>order: true/false,height: true/false,attr=>'data-order',attrOrder=>'asc'/'desc'*/ onload: function(items) {
 								                /*make somthing with items */ }
-								        });									        
+								        });
+
+                                        jQuery(".btn-view-more-1").click(function() {
+                                        	var offset = parseInt($("#hdOffset1").val());
+                                        	offset = offset + 1;
+				        					jQuery.ajax({
+											    type: "POST",
+											    url: "<?php echo get_home_url(); ?>/wp-admin/admin-ajax.php",
+					                            data: {
+					                                action: 'getPopularPosts',
+					                                posts_per_page: <?php echo $posts_per_page;?>,
+					                                category: 3,
+					                                offset: offset
+					                            },
+											    success: function (res) {
+											    	if (res != ''){
+
+												    	var el = res;
+
+	                                                    $("#hdOffset1").val(offset);
+														var html = '';
+														jQuery( "#content-news-916 .padding" ).each(function( index ) {
+	                                                        html += jQuery(this).html();
+														});
+														html = html + el;
+
+														jQuery("#content-news-916").html(html);
+														jQuery("#content-news-916").mpmansory({
+												            childrenClass: 'layout_latest',
+												            columnClasses: 'padding',
+												            breakpoints: {
+												                lg: 3,
+												                md: 4,
+												                sm: 6,
+												                xs: 6
+												            },
+												            distributeBy: {
+												                order: false,
+												                height: false,
+												                attr: 'data-order',
+												                attrOrder: 'asc'
+												            },
+												          onload: function(items) {
+												                /*make somthing with items */ }
+												        });
+												    }else{
+												    	jQuery(".block-view-more-1").css("display","none");
+												    }
+											    }
+										    });
+										 });    
+
 								    });
 								}(jQuery));
 							</script>
@@ -131,7 +187,8 @@
 								$bietthu = get_posts( array(
 								    'post_type'        => 'product',
 								    'category'         => 1,
-								    'numberposts'      => 8
+								    'posts_per_page' => $posts_per_page,
+                                    'offset'         => 0
 								));
 								?>
 								<?php
@@ -154,11 +211,14 @@
 							        } 
 							    ?>
 							</div>
-							<div style="display: none;">
+							<?php if (count($bietthu) == $posts_per_page) { ?>
+							<div class="block-view-more-2">
 								<div class="col-md-12 col-sm-12 text-center mt-3">
 									 <button class="btn btn-primary btn-view-more btn-view-more-2">XEM THÊM</button>
-								</div>	
+								</div>
+								<input type="hidden" id="hdOffset2" value="0">	
 							</div>
+							<?php } ?>
 							<script>
 								(function($) {
 								    $(document).ready(function() {
@@ -179,7 +239,58 @@
 								            },
 								            /*/default distribute by order,options=>order: true/false,height: true/false,attr=>'data-order',attrOrder=>'asc'/'desc'*/ onload: function(items) {
 								                /*make somthing with items */ }
-								        });	
+								        });
+
+
+                                        jQuery(".btn-view-more-2").click(function() {
+                                        	var offset = parseInt($("#hdOffset2").val());
+                                        	offset = offset + 1;
+				        					jQuery.ajax({
+											    type: "POST",
+											    url: "<?php echo get_home_url(); ?>/wp-admin/admin-ajax.php",
+					                            data: {
+					                                action: 'getPopularPosts',
+					                                posts_per_page: <?php echo $posts_per_page;?>,
+					                                category: 1,
+					                                offset: offset
+					                            },
+											    success: function (res) {
+											    	if (res != ''){
+
+												    	var el = res;
+
+	                                                    $("#hdOffset2").val(offset);
+														var html = '';
+														jQuery( "#content-news-999 .padding" ).each(function( index ) {
+	                                                        html += jQuery(this).html();
+														});
+														html = html + el;
+
+														jQuery("#content-news-999").html(html);
+														jQuery("#content-news-999").mpmansory({
+												            childrenClass: 'layout_latest',
+												            columnClasses: 'padding',
+												            breakpoints: {
+												                lg: 3,
+												                md: 4,
+												                sm: 6,
+												                xs: 6
+												            },
+												            distributeBy: {
+												                order: false,
+												                height: false,
+												                attr: 'data-order',
+												                attrOrder: 'asc'
+												            },
+												          onload: function(items) {
+												                /*make somthing with items */ }
+												        });
+												    }else{
+												    	jQuery(".block-view-more-2").css("display","none");
+												    }
+											    }
+										    });
+										});								        	
 								    });
 								}(jQuery));
 							</script>
@@ -195,7 +306,8 @@
 								$khachsan = get_posts( array(
 								    'post_type'        => 'product',
 								    'category'         => 6,
-								    'numberposts'      => 8
+								    'posts_per_page' => $posts_per_page,
+                                    'offset'         => 0
 								));
 								?>
 								<?php
@@ -218,11 +330,14 @@
 							        } 
 							    ?>
 							</div>
-							<div style="display: none;">
+							<?php if (count($khachsan) == $posts_per_page) { ?>
+							<div class="block-view-more-3">
 								<div class="col-md-12 col-sm-12 text-center mt-3">
 									 <button class="btn btn-primary btn-view-more btn-view-more-3">XEM THÊM</button>
 								</div>	
+								<input type="hidden" id="hdOffset3" value="0">	
 							</div>
+							<?php } ?>
 							<script>
 								(function($) {
 								    $(document).ready(function() {
@@ -243,7 +358,57 @@
 								            },
 								            /*/default distribute by order,options=>order: true/false,height: true/false,attr=>'data-order',attrOrder=>'asc'/'desc'*/ onload: function(items) {
 								                /*make somthing with items */ }
-								        });				
+								        });
+
+                                        jQuery(".btn-view-more-3").click(function() {
+                                        	var offset = parseInt($("#hdOffset3").val());
+                                        	offset = offset + 1;
+				        					jQuery.ajax({
+											    type: "POST",
+											    url: "<?php echo get_home_url(); ?>/wp-admin/admin-ajax.php",
+					                            data: {
+					                                action: 'getPopularPosts',
+					                                posts_per_page: <?php echo $posts_per_page;?>,
+					                                category: 6,
+					                                offset: offset
+					                            },
+											    success: function (res) {
+											    	if (res != ''){
+
+												    	var el = res;
+
+	                                                    $("#hdOffset3").val(offset);
+														var html = '';
+														jQuery( "#content-news-959 .padding" ).each(function( index ) {
+	                                                        html += jQuery(this).html();
+														});
+														html = html + el;
+
+														jQuery("#content-news-959").html(html);
+														jQuery("#content-news-959").mpmansory({
+												            childrenClass: 'layout_latest',
+												            columnClasses: 'padding',
+												            breakpoints: {
+												                lg: 3,
+												                md: 4,
+												                sm: 6,
+												                xs: 6
+												            },
+												            distributeBy: {
+												                order: false,
+												                height: false,
+												                attr: 'data-order',
+												                attrOrder: 'asc'
+												            },
+												          onload: function(items) {
+												                /*make somthing with items */ }
+												        });
+												    }else{
+												    	jQuery(".block-view-more-3").css("display","none");
+												    }
+											    }
+										    });
+										});								        				
 								    });
 								}(jQuery));
 							</script>
